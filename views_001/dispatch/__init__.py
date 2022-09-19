@@ -1,0 +1,1 @@
+default_app_config = 'views_001.dispatch.apps.AppConfig'
