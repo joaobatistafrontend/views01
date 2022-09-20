@@ -6,19 +6,19 @@ from django.shortcuts import redirect
     from django.shortcuts import redirect
 '''
 
-class ViewNBloqueado(TemplateView):
+class ViewNaoBloqueado(TemplateView):
     template_name = 'dispatch/ok.html'
 
-
-    def get(self, request, *args,**kwargs):
-        print(request.GET)
-        if request.GET.get == {'action','1'}:
-            return redirect('bloqueado')
+    def dispatch(self, request, *args, **kwargs):
+        if request.GET.get('acesso') == '1':
+            return super().dispatch(request, *args, **kwargs)
         else:
-            return redirect('index')
-            
-
+            return redirect ('bloqueado')
 
 class ViewBloqueado(TemplateView):
     template_name = 'dispatch/bloqueado.html'
-    
+    def dispatch(self, request, *args, **kwargs):
+        if request.GET.get('acesso') == '0':
+            return super().dispatch(request, *args, **kwargs)
+        else:
+            return redirect('index')

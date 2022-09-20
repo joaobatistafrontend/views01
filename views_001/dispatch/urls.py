@@ -1,11 +1,11 @@
 from django.urls import path
 
 from .apps import AppConfig
-from views_001.dispatch.views import ViewNBloqueado, ViewBloqueado
+from views_001.dispatch.views import  ViewBloqueado, ViewNaoBloqueado
 
 
 urlpatterns = [
-    path('', ViewNBloqueado.as_view(), name='index'),
+    path('', ViewNaoBloqueado.as_view(), name='index'),
     path('bloqueado/', ViewBloqueado.as_view(), name='bloqueado')
 ]
 
